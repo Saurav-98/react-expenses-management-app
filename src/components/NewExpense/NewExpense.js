@@ -3,10 +3,17 @@ import ExpenseForm from "./ExpenseForm";
 
 import "./NewExpense.css";
 
-const NewExpense = () => {
+const NewExpense = (props) => {
+  const submitExpenseDataHandler = (expenseData) => {
+    const expenseDataReceived = {
+      ...expenseData,
+      id: Math.random().toFixed(3).toString(),
+    };
+    props.onreceiveNewExpense(expenseDataReceived);
+  };
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      <ExpenseForm onSetExpenseData={submitExpenseDataHandler} />
     </div>
   );
 };

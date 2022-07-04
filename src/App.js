@@ -23,9 +23,19 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
+
+  const addNewExpenseHandler = (newExpenseReaceived) => {
+    const receivedExpense = {
+      ...newExpenseReaceived,
+    };
+
+    console.log("New Expense Received In APP JS");
+    console.log(receivedExpense);
+  };
+
   return (
     <div>
-      <NewExpense />
+      <NewExpense onreceiveNewExpense={addNewExpenseHandler} />
       <Expenses expenseProp={expenses} />
     </div>
   );
